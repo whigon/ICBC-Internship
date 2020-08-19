@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">e-calculator</string>
+    <string name="title_activity_calculator_loan_income">贷款计算</string>
+    <string name="title_activity_calculate_deposit_income">存款计算</string>
+</resources>

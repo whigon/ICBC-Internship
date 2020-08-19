@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="loan">
+        <item>""</item>
+        <item>"月"</item>
+        <item>"年"</item>
+    </string-array>
+
+    <string-array name="isCurrent">
+        <item>""</item>
+        <item>"是"</item>
+        <item>"否"</item>
+    </string-array>
+
+    <string-array name="deposit">
+        <item>""</item>
+        <item>"七天"</item>
+        <item>"三个月"</item>
+        <item>"六个月"</item>
+        <item>"一年"</item>
+        <item>"两年"</item>
+        <item>"三年"</item>
+        <item>"五年"</item>
+    </string-array>
+
+    <string-array name="rate">
+        <item>""</item>
+        <item>"央行基准利率"</item>
+        <item>"工行挂牌利率"</item>
+    </string-array>
+
+</resources>
