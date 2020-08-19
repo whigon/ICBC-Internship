@@ -72,7 +72,7 @@ public class CalculateLoanIncomeActivity extends AppCompatActivity implements Vi
                 duration = 0;
 
             double[] result = calculator.calculateLoanFTPIncome(amount, duration, point);
-            spreadResult.setText(String.format("%.5f", result[0]));
+            spreadResult.setText(String.format("%.3f", result[0] * 100));
             incomeResult.setText(String.format("%.5f", result[1]));
         } catch (Exception e) {
             Toast.makeText(this, "输入不合法", Toast.LENGTH_SHORT).show();

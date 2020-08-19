@@ -2,4 +2,5 @@
     <string name="app_name">e-calculator</string>
     <string name="title_activity_calculator_loan_income">贷款计算</string>
     <string name="title_activity_calculate_deposit_income">存款计算</string>
+    <string name="intro">简介：本利差计算器是用于计算本行存贷款业务FTP利差和利差收入。\n输入金额后，选择存/贷款业务，再选择相应的期限、执行利率后即可得到该笔业务的FTP利差和收入。</string>
 </resources>

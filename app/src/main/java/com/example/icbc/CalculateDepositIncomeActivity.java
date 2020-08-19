@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -37,6 +38,26 @@ public class CalculateDepositIncomeActivity extends AppCompatActivity implements
         Log.d(TAG, "onCreate: " + amount);
 
         isCurrentSpinner = findViewById(R.id.is_current_spinner);
+        isCurrentSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position == 1) {// 如果选择了活期，锁定定期存款期限选择
+                    savingSpinner.setEnabled(false);
+                    currentDurationText.setEnabled(true);
+                } else if (position == 2) {
+                    savingSpinner.setEnabled(true);
+                    currentDurationText.setEnabled(false);
+                } else {// 默认情况下解锁
+                    savingSpinner.setEnabled(true);
+                    currentDurationText.setEnabled(true);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
         currentDurationText = findViewById(R.id.current_duration_input);
         savingSpinner = findViewById(R.id.saving_duration_spinner);
         rateSpinner = findViewById(R.id.rate_type_spinner);
@@ -57,7 +78,7 @@ public class CalculateDepositIncomeActivity extends AppCompatActivity implements
         try {
             switch (isCurrentSpinner.getSelectedItemPosition()) {
                 case 0:
-                    Toast.makeText(this, "请选择存款类型是否为活期", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "请选择存款类型", Toast.LENGTH_SHORT).show();
                     break;
                 case 1:
                     // 必须整数
@@ -66,7 +87,7 @@ public class CalculateDepositIncomeActivity extends AppCompatActivity implements
                     break;
                 case 2:
                     if (savingSpinner.getSelectedItemPosition() == 0)
-                        Toast.makeText(this, "请选择定期时长", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "请选择定期期限", Toast.LENGTH_SHORT).show();
                     else if (savingSpinner.getSelectedItemPosition() == 1)
                         duration = 7 / 360.0;
                     else if (savingSpinner.getSelectedItemPosition() == 2)
@@ -86,7 +107,7 @@ public class CalculateDepositIncomeActivity extends AppCompatActivity implements
                     break;
             }
 
-            spreadResult.setText(String.format("%.5f", result[0]));
+            spreadResult.setText(String.format("%.3f", result[0] * 100));
             incomeResult.setText(String.format("%.5f", result[1]));
         } catch (Exception e) {
             Toast.makeText(this, "输入不合法", Toast.LENGTH_SHORT).show();
