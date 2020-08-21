@@ -2,6 +2,7 @@ package com.example.icbc;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -13,8 +14,6 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "MainActivity";
     private EditText textView;
-    private Button depositButton;
-    private Button loanButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,9 +21,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         textView = findViewById(R.id.input);
-        depositButton = findViewById(R.id.deposit);
+        // 设置输入长度限制
+        textView.setFilters(new InputFilter[]{new InputFilter.LengthFilter(10)});
+        Button depositButton = findViewById(R.id.deposit);
         depositButton.setOnClickListener(this);
-        loanButton = findViewById(R.id.loan);
+        Button loanButton = findViewById(R.id.loan);
         loanButton.setOnClickListener(this);
     }
 
@@ -51,7 +52,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Log.d(TAG, "onClick: " + e);
             Toast.makeText(this, "输入不合法", Toast.LENGTH_SHORT).show();
         }
-
-
     }
 }

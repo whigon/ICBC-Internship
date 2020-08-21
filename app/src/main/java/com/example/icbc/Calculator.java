@@ -111,13 +111,13 @@ public class Calculator {
             case 1:
                 // 浮动比例
                 double rate = Calculator.format(value);
-                // 存款FTP利差:存款FTP–执行利率*（1+浮动比例）
+                // 存款FTP利差:存款FTP–央行基准利率*（1+浮动比例）
                 FTPSpread = depositRate.get(2) - depositRate.get(0) * (1 + rate);
                 break;
             case 2:
                 // 加减点
                 int point = Integer.parseInt(value);
-                // 存款FTP利差:存款FTP–（执行利率+加减点/10000*100%）
+                // 存款FTP利差:存款FTP–（工行挂牌利率+加减点/10000*100%）
                 FTPSpread = depositRate.get(2) - (depositRate.get(1) + point / 10000.0);
                 break;
             default:
@@ -131,7 +131,7 @@ public class Calculator {
         return new double[]{FTPSpread, income};
     }
 
-    private ArrayList<Double> getDepositRate(boolean isCurrent, double duration) {
+    public ArrayList<Double> getDepositRate(boolean isCurrent, double duration) {
         ArrayList<Double> rate = null;
 
         if (isCurrent) {
@@ -175,7 +175,7 @@ public class Calculator {
         return new double[]{FTPSpread, income};
     }
 
-    private ArrayList<Double> getLoanRate(double duration) {
+    public ArrayList<Double> getLoanRate(double duration) {
         ArrayList<Double> rate = null;
 
         if (duration > 0 && duration <= 0.5)
