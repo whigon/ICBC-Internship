@@ -161,7 +161,7 @@ public class CalculateDepositIncomeActivity extends AppCompatActivity implements
                                 double baseRate = depositRate.get(0); //央行基准利率
                                 value /= 100; //浮动比例
                                 // 计算执行利率
-                                strikeRateText.setText(String.format("%.2f", (baseRate + value) * 100));
+                                strikeRateText.setText(String.format("%.2f", baseRate * (1 + value) * 100));
                             } else if (rateSpinner.getSelectedItemPosition() == 2) {
                                 double baseRate = depositRate.get(1); //工行挂牌利率
                                 value /= 10000; //1BP = 0.01%

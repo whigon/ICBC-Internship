@@ -90,7 +90,7 @@ public class CalculateLoanIncomeActivity extends AppCompatActivity implements Vi
         strikeRateText = findViewById(R.id.strike_rate);
         pointText = findViewById(R.id.point_input);
         // 设置输入为整数
-        pointText.setInputType(InputType.TYPE_CLASS_NUMBER);
+        pointText.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_SIGNED);
         // 设置输入长度限制
         pointText.setFilters(new InputFilter[]{new InputFilter.LengthFilter(4)});
         pointText.addTextChangedListener(new TextWatcher() {
